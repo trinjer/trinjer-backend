@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<trinjer.profiles.active></trinjer.profiles.active>
 	</properties>
 
 	<dependencies>
@@ -41,7 +42,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -69,5 +70,21 @@
 		</plugins>
 	</build>
 
-
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<trinjer.profiles.active>local</trinjer.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<trinjer.profiles.active>test</trinjer.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 </project>
