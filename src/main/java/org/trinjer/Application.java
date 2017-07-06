@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource({"classpath:${spring.profiles.active}/db.properties"})
+@PropertySource({"classpath:${spring.profiles.active}/security.properties"})
 public class Application {
 
     public static void main(String[] args) {
