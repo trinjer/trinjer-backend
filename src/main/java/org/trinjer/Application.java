@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource({"classpath:${spring.profiles.active}/db.properties"})
-@PropertySource({"classpath:${spring.profiles.active}/security.properties"})
+@PropertySource({"classpath:conf/${spring.profiles.active}/db.properties"})
+@PropertySource({"classpath:conf/${spring.profiles.active}/security.properties"})
 public class Application {
 
     public static void main(String[] args) {

@@ -1,8 +1,12 @@
 package org.trinjer.domain;
 
-import lombok.Data;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import lombok.Data;
 
 /**
  * Created by arturjoshi on 06-Jul-17.
@@ -11,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "Users")
 @Data
 public class UserEntity {
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id @GeneratedValue
     private int id;
     @Column
     private String username;

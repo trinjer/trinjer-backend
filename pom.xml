@@ -22,7 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<trinjer.profiles.active></trinjer.profiles.active>
+		<trinjer.profiles.active>local</trinjer.profiles.active>
+		<flyway-core.version>4.1.2</flyway-core.version>
 	</properties>
 
 	<dependencies>
@@ -45,9 +46,14 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>${flyway-core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
