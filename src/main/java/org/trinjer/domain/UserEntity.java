@@ -12,7 +12,7 @@ import lombok.Data;
  * Created by arturjoshi on 06-Jul-17.
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 @Data
 public class UserEntity {
     @Id @GeneratedValue

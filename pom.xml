@@ -24,6 +24,8 @@
 		<java.version>1.8</java.version>
 		<trinjer.profiles.active>local</trinjer.profiles.active>
 		<flyway-core.version>4.1.2</flyway-core.version>
+		<geda.core.version>3.1.0</geda.core.version>
+		<springfox-swagger2.version>2.5.0</springfox-swagger2.version>
 	</properties>
 
 	<dependencies>
@@ -39,7 +41,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
+		<!-- DB -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -50,20 +58,39 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Flyway -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 			<version>${flyway-core.version}</version>
 		</dependency>
+
+		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Geda -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>com.inspire-software.lib.dto.geda</groupId>
+			<artifactId>geda.core</artifactId>
+			<version>${geda.core.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>javassist</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox-swagger2.version}</version>
 		</dependency>
 	</dependencies>
 

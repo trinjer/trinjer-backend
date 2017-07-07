@@ -1,4 +1,7 @@
-package org.trinjer.domain.controllers;
+package org.trinjer.controllers;
+
+import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,21 +13,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.trinjer.controllers.dto.UserDto;
+import org.trinjer.controllers.dto.assemblers.DtoAssemblerService;
 import org.trinjer.domain.UserEntity;
 import org.trinjer.security.JwtAuthenticationRequest;
 import org.trinjer.security.JwtAuthenticationResponse;
 import org.trinjer.security.token.TokenHandler;
 import org.trinjer.services.UserService;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.Collection;
-import java.util.Collections;
-
 /**
  * Created by arturjoshi on 06-Jul-17.
  */
 @RestController
-public class UserController {
+public class SessionController {
 
     @Autowired
     private UserService userService;
@@ -35,14 +36,12 @@ public class UserController {
     @Autowired
     private TokenHandler tokenHandler;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users")
-    public ResponseEntity<Collection<UserEntity>> findAllUsers() {
-        return ResponseEntity.ok(userService.findAll());
-    }
+    @Autowired
+    private DtoAssemblerService dtoAssemblerService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
-    public ResponseEntity<UserEntity> registerNewUser(@RequestBody UserEntity userEntity) {
-        return ResponseEntity.ok(userService.registerNewUser(userEntity));
+    public ResponseEntity<UserDto> registerNewUser(@RequestBody UserEntity userEntity) {
+        return ResponseEntity.ok(dtoAssemblerService.assemble(userService.registerNewUser(userEntity)));
     }
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
