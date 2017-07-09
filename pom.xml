@@ -125,5 +125,11 @@
 				<trinjer.profiles.active>test</trinjer.profiles.active>
 			</properties>
 		</profile>
+		<profile>
+			<id>ci</id>
+			<properties>
+				<trinjer.profiles.active>ci</trinjer.profiles.active>
+			</properties>
+		</profile>
 	</profiles>
 </project>
