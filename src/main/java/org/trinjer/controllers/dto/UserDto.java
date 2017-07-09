@@ -11,7 +11,9 @@ public class UserDto {
     @DtoField
     private int id;
     @DtoField
-    private String username;
+    private String firstName;
+    @DtoField
+    private String lastName;
     @DtoField
     private String email;
 }

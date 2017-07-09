@@ -24,8 +24,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public UserEntity findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public UserEntity findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public UserEntity registerNewUser(UserEntity userEntity) {

@@ -12,10 +12,16 @@ public class TrinjerUserDetails extends UserEntity implements UserDetails {
     public static TrinjerUserDetails of(UserEntity userEntity) {
         TrinjerUserDetails trinjerUserDetails = new TrinjerUserDetails();
         trinjerUserDetails.setId(userEntity.getId());
-        trinjerUserDetails.setUsername(userEntity.getUsername());
+        trinjerUserDetails.setFirstName(userEntity.getFirstName());
+        trinjerUserDetails.setLastName(userEntity.getLastName());
         trinjerUserDetails.setPassword(userEntity.getPassword());
         trinjerUserDetails.setEmail(userEntity.getEmail());
         return trinjerUserDetails;
+    }
+
+    @Override
+    public String getUsername() {
+        return getEmail();
     }
 
     @Override
