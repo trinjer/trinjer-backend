@@ -62,11 +62,11 @@ public class TokenHandler {
     public UserDetails getUserFromToken(String token) throws TokenExpirationException, NoSuchAlgorithmException, TokenUpdateRequiredException {
         String decoded = new String(Base64.decode(token.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
         String[] parsed = decoded.split(":");
-        String username = parsed[0];
+        String email = parsed[0];
         long timestamp = Long.parseLong(parsed[1]);
         byte[] digest = Base64.decode(parsed[2].getBytes(StandardCharsets.UTF_8));
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         if (timestamp < System.currentTimeMillis()) {
             throw new TokenExpirationException();
         } else if(timestamp - System.currentTimeMillis() < getRenewTokenPeriod()){
@@ -81,7 +81,7 @@ public class TokenHandler {
 
         StringBuilder builder = new StringBuilder();
         builder
-                .append(username).append(":")
+                .append(email).append(":")
                 .append(timestamp).append(":")
                 .append(userDetails.getPassword()).append(":")
                 .append(authoritiesBuilder.toString()).append(":")

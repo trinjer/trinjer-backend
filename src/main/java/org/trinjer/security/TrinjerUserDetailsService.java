@@ -19,7 +19,7 @@ public class TrinjerUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String s) {
-        return TrinjerUserDetails.of(Optional.ofNullable(userRepository.findByUsername(s))
+        return TrinjerUserDetails.of(Optional.ofNullable(userRepository.findByEmail(s))
                 .orElseThrow(() -> new UsernameNotFoundException("No such user")));
     }
 }

@@ -18,7 +18,9 @@ public class UserEntity {
     @Id @GeneratedValue
     private int id;
     @Column
-    private String username;
+    private String firstName;
+    @Column
+    private String lastName;
     @Column
     private String password;
     @Column

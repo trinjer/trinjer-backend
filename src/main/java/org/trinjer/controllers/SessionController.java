@@ -47,11 +47,11 @@ public class SessionController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody JwtAuthenticationRequest request) throws NoSuchAlgorithmException {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword());
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
         Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = tokenHandler.getTokenForUser(userDetails);
-        UserEntity gebruiker = userService.findByUsername(userDetails.getUsername());
+        UserEntity gebruiker = userService.findByEmail(userDetails.getUsername());
         JwtAuthenticationResponse response =
                 new JwtAuthenticationResponse(
                         token,
