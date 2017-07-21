@@ -4,13 +4,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.PropertySource;
+
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
+
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
+@EnableEncryptableProperties
 @SpringBootApplication
-@PropertySource({"classpath:conf/${spring.profiles.active}/db.properties"})
-@PropertySource({"classpath:conf/${spring.profiles.active}/security.properties"})
+@EncryptablePropertySource({"classpath:conf/${spring.profiles.active}/db.properties"})
+@EncryptablePropertySource({"classpath:conf/${spring.profiles.active}/security.properties"})
 public class Application extends SpringBootServletInitializer {
 
     @Override
