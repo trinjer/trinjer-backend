@@ -53,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/configuration/security")
                 .permitAll();
         httpSecurity.authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS)
+                .permitAll()
                 .antMatchers(HttpMethod.POST,
                         "/authenticate/**",
                         "/register/**")
