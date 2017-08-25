@@ -51,8 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/configuration/ui",
                         "/swagge‌​r-ui.html",
                         "/swagger-resources/configuration/security")
-                .permitAll();
-        httpSecurity.authorizeRequests()
+                .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)
                 .permitAll()
                 .antMatchers(HttpMethod.POST,
