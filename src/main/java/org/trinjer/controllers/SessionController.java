@@ -18,8 +18,6 @@ import org.trinjer.security.JwtAuthenticationResponse;
 import org.trinjer.security.token.TokenHandler;
 import org.trinjer.services.UserService;
 
-import javax.xml.ws.Response;
-
 /**
  * Created by arturjoshi on 06-Jul-17.
  */
