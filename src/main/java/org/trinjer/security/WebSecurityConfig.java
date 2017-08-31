@@ -21,15 +21,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationFilter authenticationFilter;
+    private final AuthenticationFilter authenticationFilter;
+
+    private final UserDetailsService userDetailsService;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    public WebSecurityConfig(AuthenticationFilter authenticationFilter, UserDetailsService userDetailsService) {
+        this.authenticationFilter = authenticationFilter;
+        this.userDetailsService = userDetailsService;
+    }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
+    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder
                 .userDetailsService(this.userDetailsService)
                 .passwordEncoder(passwordEncoderBean());
     }
