@@ -23,6 +23,6 @@ public class UserEntity {
     private String lastName;
     @Column
     private String password;
-    @Column
+    @Column(unique = true)
     private String email;
 }

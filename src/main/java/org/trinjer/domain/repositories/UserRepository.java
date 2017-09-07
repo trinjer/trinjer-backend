@@ -8,4 +8,5 @@ import org.trinjer.domain.UserEntity;
  */
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     UserEntity findByEmail(String email);
+    boolean existsByEmail(String email);
 }
