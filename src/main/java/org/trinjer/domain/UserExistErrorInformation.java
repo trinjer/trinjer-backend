@@ -2,10 +2,10 @@ package org.trinjer.domain;
 
 import org.trinjer.controllers.dto.UserDto;
 
-public class UserNotFoundErrorInformation {
+public class UserExistErrorInformation {
     private String errorMessage;
 
-    public UserNotFoundErrorInformation(String errorMessage) {
+    public UserExistErrorInformation(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
